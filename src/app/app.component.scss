@@ -1,0 +1,24 @@
+@use '../styles' as *;
+@use "sass:color";
+
+.app-container {
+  @extend .container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+
+  h1 {
+    text-align: center;
+    font-weight: 700;
+    color: $accent-color;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: color.adjust($text-color, $lightness: -10%);
+    margin-top: 1rem;
+  }
+}

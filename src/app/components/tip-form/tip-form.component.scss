@@ -1,0 +1,52 @@
+@use '../../../styles' as *;
+@use "sass:color";
+
+.tip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  label {
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  input {
+    padding: 0.6rem;
+    border-radius: $border-radius;
+    border: 1px solid color.adjust($accent-color, $lightness: 20%);
+    font-size: 1rem;
+    transition: all $transition-speed ease-in-out;
+    width: 100%;
+
+    &:focus {
+      border-color: $accent-color;
+      outline: none;
+      box-shadow: 0 0 5px color.adjust($accent-color, $alpha: -0.6);
+    }
+  }
+
+  .results {
+    background-color: $secondary-color;
+    border-radius: $border-radius;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+
+    p {
+      font-size: 1rem;
+      margin: 0.3rem 0;
+      strong {
+        color: $accent-color;
+      }
+    }
+  }
+
+  @include responsive(sm) {
+    gap: 1rem;
+
+    input {
+      font-size: 0.95rem;
+    }
+  }
+}

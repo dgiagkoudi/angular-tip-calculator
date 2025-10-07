@@ -1,0 +1,25 @@
+<div class="calculator">
+  <h2>Tip Calculator</h2>
+
+  <div class="input-group">
+    <label>Bill Amount (€)</label>
+    <input type="number" [(ngModel)]="bill" (input)="calculate()" min="0">
+  </div>
+
+  <div class="input-group">
+    <label>Tip (%)</label>
+    <input type="number" [(ngModel)]="tipPercent" (input)="calculate()" min="0">
+  </div>
+
+  <div class="input-group">
+    <label>Number of People</label>
+    <input type="number" [(ngModel)]="people" (input)="calculate()" min="1">
+  </div>
+
+  <div class="results">
+    <p>Tip per person: <strong>{{ tipPerPerson | currency:'EUR' }}</strong></p>
+    <p>Total per person: <strong>{{ totalPerPerson | currency:'EUR' }}</strong></p>
+  </div>
+
+  <button (click)="reset()">Reset</button>
+</div>
