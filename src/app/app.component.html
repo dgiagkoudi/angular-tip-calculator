@@ -1,2 +1,25 @@
+<div class="app-container">
+  <header class="header">
+    <div class="brand">
+      <h1>Tip Calculator</h1>
+    </div>
 
-<app-tip-form></app-tip-form>
+    <nav class="main-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/history" routerLinkActive="active">History</a>
+    </nav>
+
+    <div class="controls">
+      <button class="theme-toggle" (click)="toggleTheme()">
+        <span *ngIf="darkMode">☀️ Light Mode</span>
+        <span *ngIf="!darkMode">🌙 Dark Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <footer>
+    © 2025 Tip Calculator
+  </footer>
+</div>

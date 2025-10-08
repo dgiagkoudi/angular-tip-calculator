@@ -1,0 +1,24 @@
+<div class="history-page card">
+  <h2>History</h2>
+
+  <button class="btn clear" (click)="clearHistory()" *ngIf="history.length > 0">
+    Clear History
+  </button>
+
+  <ul *ngIf="history.length > 0; else noHistory">
+    <li *ngFor="let item of history; index as i">
+      <span class="index">#{{ i + 1 }}</span>
+      <div class="details">
+        <p><strong>Bill:</strong> €{{ item.bill }}</p>
+        <p><strong>Tip:</strong> {{ item.tipPercent }}%</p>
+        <p><strong>People:</strong> {{ item.people }}</p>
+        <p><strong>Tip/Person:</strong> €{{ item.tipPerPerson.toFixed(2) }}</p>
+        <p><strong>Total/Person:</strong> €{{ item.totalPerPerson.toFixed(2) }}</p>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #noHistory>
+    <p class="empty">No history found yet</p>
+  </ng-template>
+</div>

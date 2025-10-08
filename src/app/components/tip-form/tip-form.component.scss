@@ -1,48 +1,74 @@
-@use '../../../styles' as *;
 @use "sass:color";
 
 .tip-form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1rem;
 
   label {
     font-weight: 600;
-    color: $text-color;
+    color: var(--text-color);
   }
 
   input {
     padding: 0.6rem;
-    border-radius: $border-radius;
-    border: 1px solid color.adjust($accent-color, $lightness: 20%);
+    border-radius: 0.4rem;
+    border: 1px solid color.adjust(#81c784, $lightness: 20%);
     font-size: 1rem;
-    transition: all $transition-speed ease-in-out;
+    transition: all 0.3s ease-in-out;
     width: 100%;
 
     &:focus {
-      border-color: $accent-color;
+      border-color: var(--accent-color);
       outline: none;
-      box-shadow: 0 0 5px color.adjust($accent-color, $alpha: -0.6);
+      box-shadow: 0 0 5px color.adjust(#81c784, $alpha: -0.6);
     }
   }
 
-  .results {
-    background-color: $secondary-color;
-    border-radius: $border-radius;
-    padding: 1rem;
-    text-align: center;
-    margin-top: 1rem;
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 
-    p {
-      font-size: 1rem;
-      margin: 0.3rem 0;
-      strong {
-        color: $accent-color;
+    .btn {
+      padding: 0.55rem 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      color: white;
+
+      &.calculate {
+        background-color: var(--primary-color);
+        &:hover {
+          background-color: color.adjust(#4caf50, $lightness: -10%);
+        }
+      }
+
+      &.reset {
+        background-color: var(--accent-color);
+        &:hover {
+          background-color: color.adjust(#81c784, $lightness: -10%);
+        }
       }
     }
   }
 
-  @include responsive(sm) {
+  .error {
+    color: #e53935;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .tip-form {
     gap: 1rem;
 
     input {

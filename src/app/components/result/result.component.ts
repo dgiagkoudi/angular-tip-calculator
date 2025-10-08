@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -9,6 +9,6 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent {
-  tipPerPerson: number = 0;
-  totalPerPerson: number = 0;
+  @Input() tipPerPerson: number = 0;
+  @Input() totalPerPerson: number = 0;
 }

@@ -1,0 +1,61 @@
+@use 'sass:color';
+
+.history-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .btn.clear {
+    display: block;
+    margin: 0 auto 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--accent-color);
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.8rem 0;
+
+      .index {
+        font-weight: bold;
+        color: var(--accent-color);
+        min-width: 2rem;
+      }
+
+      .details p {
+        margin: 0.2rem 0;
+      }
+    }
+  }
+
+  .empty {
+    text-align: center;
+    opacity: 0.7;
+  }
+}

@@ -1,25 +1,31 @@
-<div class="calculator">
-  <h2>Tip Calculator</h2>
+<div class="tip-form card">
+  <form (ngSubmit)="calculate()">
+    <div class="input-group">
+      <label>Bill Amount (€):</label>
+      <input type="number" [(ngModel)]="bill" name="bill" min="0.01" step="0.01" inputmode="decimal" required>
+    </div>
 
-  <div class="input-group">
-    <label>Bill Amount (€)</label>
-    <input type="number" [(ngModel)]="bill" (input)="calculate()" min="0">
-  </div>
+    <div class="input-group">
+      <label>Tip Percentage (%):</label>
+      <input type="number" [(ngModel)]="tipPercent" name="tipPercent" min="0" step="1" required>
+    </div>
 
-  <div class="input-group">
-    <label>Tip (%)</label>
-    <input type="number" [(ngModel)]="tipPercent" (input)="calculate()" min="0">
-  </div>
+    <div class="input-group">
+      <label>Number of People:</label>
+      <input type="number" [(ngModel)]="people" name="people" min="1" step="1" required>
+    </div>
 
-  <div class="input-group">
-    <label>Number of People</label>
-    <input type="number" [(ngModel)]="people" (input)="calculate()" min="1">
-  </div>
+    <div class="buttons">
+      <button type="submit" class="btn calculate">Calculate</button>
+      <button type="button" class="btn reset" (click)="reset()">Reset</button>
+    </div>
+  </form>
 
-  <div class="results">
-    <p>Tip per person: <strong>{{ tipPerPerson | currency:'EUR' }}</strong></p>
-    <p>Total per person: <strong>{{ totalPerPerson | currency:'EUR' }}</strong></p>
-  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
 
-  <button (click)="reset()">Reset</button>
+  <app-result
+    *ngIf="calculated"
+    [tipPerPerson]="tipPerPerson"
+    [totalPerPerson]="totalPerPerson">
+  </app-result>
 </div>

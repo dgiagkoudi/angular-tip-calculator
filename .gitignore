@@ -1,48 +1,62 @@
-# Compiled output
-/bazel-out
-
-# IDEs and editors
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Miscellaneous
-/.angular
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
-
-# System files
-Thumbs.db
-
 # Node dependencies
-/node_modules
-npm-debug.log
-yarn-error.log
+/node_modules/
+npm-debug.log*
+yarn-error.log*
 package-lock.json
 
 # Angular build outputs
-/dist
-/tmp
-/out-tsc
-/.angular/cache
+/dist/
+/tmp/
+/out-tsc/
+/.angular/cache/
+/.angular/*
+!/angular.json
 
-# IDE & Editor folders
+# Sass cache
+.sass-cache/
+
+# Testing & coverage
+/coverage/
+karma-coverage/
+test-results/
+*.spec.ts
+
+# IDE / Editor folders
 .vscode/
 .idea/
-.DS_Store
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+.project
+.classpath
+.settings/
+*.iml
 
 # System files
+.DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Misc
+# Miscellaneous / temp
 *.log
-*.tgz
 *.swp
+*.tgz
+/connect.lock
+/typings/
+/__screenshots__/
+/backup/
+/logs/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Optional OS-specific ignores
+*.bat
+*.cmd
+*.ps1
+.AppleDouble
+.LSOverride
+Icon?

@@ -1,28 +1,18 @@
-@use '../../../styles' as *;
-@use "sass:color";
-
 .result-container {
-  background-color: white;
-  border-radius: $border-radius;
-  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 0.4rem;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   p {
     font-size: 1rem;
     margin: 0.5rem 0;
 
     strong {
-      color: $primary-color;
-      font-size: 1.2rem;
-    }
-  }
-
-  @include responsive(sm) {
-    padding: 1rem;
-
-    strong {
+      color: var(--primary-color);
       font-size: 1.1rem;
     }
   }

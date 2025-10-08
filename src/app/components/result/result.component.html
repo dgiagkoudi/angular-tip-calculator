@@ -1,4 +1,4 @@
-<div class="results">
-  <p>Tip per person: <strong>{{ tipPerPerson | currency:'EUR' }}</strong></p>
-  <p>Total per person: <strong>{{ totalPerPerson | currency:'EUR' }}</strong></p>
+<div class="result-container card">
+  <p>Tip per person: <strong>{{ tipPerPerson | number:'1.2-2' }} €</strong></p>
+  <p>Total per person: <strong>{{ totalPerPerson | number:'1.2-2' }} €</strong></p>
 </div>

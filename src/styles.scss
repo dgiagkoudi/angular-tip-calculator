@@ -1,76 +1,81 @@
-@use "sass:color";
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #e8f5e9;
+  --accent-color: #81c784;
+  --text-color: #38a581;
+  --background-color: #f9fff9;
+  --input-bg: #ffffff;
+  --card-bg: #ffffff;
+  --border-color: #c8e6c9;
+}
 
-$primary-color: #31c48d;
-$secondary-color: #f5f5f5;
-$accent-color: #0d9488;
-$text-color: #333;
-$border-radius: 12px;
+.dark-theme {
+  --primary-color: #2e7d32;
+  --secondary-color: #1b1b1b;
+  --accent-color: #66bb6a;
+  --text-color: #eafffc;
+  --background-color: #121212;
+  --input-bg: #2c2c2c;
+  --card-bg: #1f1f1f;
+  --border-color: #424242;
+}
+
+$border-radius: 0.4rem;
 $transition-speed: 0.3s;
-$font-stack: 'Poppins', 'Segoe UI', sans-serif;
 
 @mixin responsive($breakpoint) {
   @if $breakpoint == sm {
-    @media (max-width: 600px) { @content; }
+    @media (max-width: 600px) {
+      @content;
+    }
   }
-  @if $breakpoint == md {
-    @media (max-width: 900px) { @content; }
-  }
-}
-
-* {
-  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: $font-stack;
-  background-color: $secondary-color;
-  color: $text-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  transition: background-color $transition-speed ease, color $transition-speed ease;
+  min-height: 100vh;
 }
 
-.container {
-  background-color: white;
+input, select, textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  transition: all $transition-speed ease-in-out;
+
+  &:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 5px var(--accent-color);
+  }
+}
+
+.card, .results, .history, .result-container {
+  background-color: var(--card-bg);
+  color: var(--text-color);
   border-radius: $border-radius;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  max-width: 90%;
-  transition: transform $transition-speed ease-in-out;
-
-  &:hover {
-    transform: translateY(-3px);
-  }
-
-  @include responsive(sm) {
-    padding: 1.5rem;
-  }
-}
-
-h1, h2, h3 {
-  color: $accent-color;
-  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color $transition-speed ease, color $transition-speed ease;
 }
 
 button {
-  background-color: $primary-color;
-  color: white;
-  border: none;
+  transition: all $transition-speed ease;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid currentColor;
   border-radius: $border-radius;
-  padding: 0.7rem 1.2rem;
+  padding: 0.4rem 0.8rem;
   cursor: pointer;
-  font-weight: 600;
-  transition: background-color $transition-speed ease;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: color.adjust($primary-color, $lightness: -10%);
-  }
-
-  &:disabled {
-    background-color: color.adjust($primary-color, $lightness: 20%);
-    cursor: not-allowed;
+    opacity: 0.8;
+    background-color: var(--accent-color);
+    color: white;
   }
 }
