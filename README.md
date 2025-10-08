@@ -23,6 +23,10 @@
 src/
 ├── app/
 │   ├── components/
+│   │   ├── history-page/
+│   │   │   ├── history-page.component.ts
+│   │   │   ├── history-page.component.html
+│   │   │   └── history-page.component.scss
 │   │   ├── tip-form/
 │   │   │   ├── tip-form.component.ts
 │   │   │   ├── tip-form.component.html
@@ -32,10 +36,13 @@ src/
 │   │       ├── result.component.html
 │   │       └── result.component.scss
 │   ├── services/
+│   │   ├── theme.service.ts
 │   │   └── tip-calculator.service.ts
 │   ├── app.component.ts
 │   ├── app.component.html
 │   ├── app.component.scss
+│   ├── app.config.ts
+│   ├── app.routes.ts
 │   └── app.module.ts
 ├── index.html
 ├── main.ts
