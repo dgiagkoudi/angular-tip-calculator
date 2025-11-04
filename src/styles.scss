@@ -2,47 +2,64 @@
   --primary-color: #4caf50;
   --secondary-color: #e8f5e9;
   --accent-color: #81c784;
-  --text-color: #38a581;
+  --text-color: #2e7d32;
   --background-color: #f9fff9;
   --input-bg: #ffffff;
   --card-bg: #ffffff;
   --border-color: #c8e6c9;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.15);
+  --transition-speed: 0.3s;
 }
 
 .dark-theme {
-  --primary-color: #2e7d32;
-  --secondary-color: #1b1b1b;
-  --accent-color: #66bb6a;
+  --primary-color: #66bb6a;
+  --secondary-color: #1e1e1e;
+  --accent-color: #81c784;
   --text-color: #eafffc;
   --background-color: #121212;
-  --input-bg: #2c2c2c;
-  --card-bg: #1f1f1f;
-  --border-color: #424242;
+  --input-bg: #1e1e1e;
+  --card-bg: #1a1a1a;
+  --border-color: #2d2d2d;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
-$border-radius: 0.4rem;
+$border-radius: 0.6rem;
 $transition-speed: 0.3s;
 
-@mixin responsive($breakpoint) {
-  @if $breakpoint == sm {
-    @media (max-width: 600px) {
-      @content;
-    }
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-  background-color: var(--background-color);
+  background: linear-gradient(135deg, var(--background-color), var(--secondary-color));
   color: var(--text-color);
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   transition: background-color $transition-speed ease, color $transition-speed ease;
   min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
+
+h1, h2, h3 { font-weight: 700; letter-spacing: 0.5px; }
 
 input, select, textarea {
   background-color: var(--input-bg);
   border: 1px solid var(--border-color);
   color: var(--text-color);
+  border-radius: $border-radius;
+  padding: 0.6rem 0.75rem;
+  width: 100%;
+  font-size: 1rem;
+  box-shadow: none;
   transition: all $transition-speed ease-in-out;
 
   &:focus {
@@ -50,32 +67,83 @@ input, select, textarea {
     outline: none;
     box-shadow: 0 0 5px var(--accent-color);
   }
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 .card, .results, .history, .result-container {
   background-color: var(--card-bg);
   color: var(--text-color);
   border-radius: $border-radius;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color $transition-speed ease, color $transition-speed ease;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  transition: background-color $transition-speed ease, color $transition-speed ease, box-shadow $transition-speed ease;
+
+  &:hover { box-shadow: var(--shadow-hover); }
 }
 
 button {
   transition: all $transition-speed ease;
+  cursor: pointer;
+  border-radius: $border-radius;
+  border: none;
+  font-weight: 600;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  box-shadow: var(--shadow);
+
+  &:hover {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: translateY(-2px);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.6rem 1.2rem;
+
+  &:hover { background-color: var(--accent-color); }
 }
 
 .theme-toggle {
-  background: none;
+  background: transparent;
   border: 1px solid currentColor;
   border-radius: $border-radius;
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease-in-out;
 
-  &:hover {
-    opacity: 0.8;
-    background-color: var(--accent-color);
-    color: white;
-  }
+  &:hover { background-color: var(--accent-color); color: white; opacity: 0.9; }
 }
+
+a { color: var(--primary-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+
+.fade-in-up { animation: fadeInUp 0.5s ease-in-out; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
